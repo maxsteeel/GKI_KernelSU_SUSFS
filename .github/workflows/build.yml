@@ -158,6 +158,12 @@ jobs:
         version: ${{ inputs.version }}
         kernel_version: ${{ inputs.kernel_version }}
 
+    - name: NoMount
+      if: contains(inputs.feature_set, 'NM') || inputs.feature_set == 'FULL'
+      uses: ./.github/actions/nomount
+      with:
+        kernel_version: ${{ inputs.kernel_version }}
+
     - name: Setup Misc Configs
       uses: ./.github/actions/misc
       with:
